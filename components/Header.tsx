@@ -1,10 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -18,8 +21,16 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold">
+          <Link href="/" className="flex items-center space-x-3">
+            <Image
+              src="/logo.jpeg"
+              alt="Property Tax Cutters Logo"
+              width={48}
+              height={48}
+              className="h-11 w-auto md:h-12"
+              priority
+            />
+            <span className="text-lg md:text-xl font-bold hidden sm:block">
               <span className="text-navy">PROPERTY TAX</span>{' '}
               <span className="text-gold">CUTTERS</span>
             </span>
@@ -27,15 +38,22 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-navy font-medium hover:text-gold transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-navy font-semibold text-base transition-colors ${
+                    isActive
+                      ? 'text-gold'
+                      : 'hover:text-gold'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -65,16 +83,23 @@ export default function Header() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block text-navy font-medium hover:text-gold transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`block text-navy font-semibold text-base transition-colors py-2 ${
+                    isActive
+                      ? 'text-gold'
+                      : 'hover:text-gold'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </div>
         )}
       </nav>

@@ -48,9 +48,32 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h4 className="font-bold mb-4">Contact</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li>www.PropertyTaxCutters.com</li>
-              <li>Florida, USA</li>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a 
+                  href="tel:614-365-0895" 
+                  className="text-gray-300 hover:text-gold transition-colors"
+                >
+                  614-365-0895
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="mailto:info@propertytaxcutters.com" 
+                  className="text-gray-300 hover:text-gold transition-colors break-all"
+                >
+                  info@propertytaxcutters.com
+                </a>
+              </li>
+              <li className="text-gray-300 pt-2">
+                <span className="block">1121 S Military Trail</span>
+                <span className="block">Suite 25B</span>
+                <span className="block">Deerfield Beach, FL 33442</span>
+              </li>
+              <li className="text-gray-300 pt-2">
+                <span className="font-semibold text-gold">Hours:</span>
+                <span className="block">8am to 8pm (Mon–Fri)</span>
+              </li>
             </ul>
           </div>
         </div>
