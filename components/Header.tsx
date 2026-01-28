@@ -23,7 +23,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/logo.jpeg"
+              src="/PTC-WEBSITE--STEVE/logo.jpeg"
               alt="Property Tax Cutters Logo"
               width={48}
               height={48}
